@@ -62,7 +62,7 @@ public class TaskExecutorService implements TaskExecutor {
     }
 
     /**
-     * Helper class to encapsulate a task, its associated future, and submission time.
+     * Helper class to encapsulate a task, its associated future.
      *
      * @param <T> the result type returned by the task's computation
      */

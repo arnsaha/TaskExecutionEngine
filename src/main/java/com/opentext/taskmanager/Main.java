@@ -12,7 +12,7 @@ public class Main {
         TaskGroup taskGroup1 = new TaskGroup(UUID.randomUUID());
         TaskGroup taskGroup2 = new TaskGroup(UUID.randomUUID());
         List<Future<String>> answers = new ArrayList<>();
-        for( int i =0 ;i<100 ;i++) {
+        for( int i =0 ;i<20 ;i++) {
             Task<String> t;
             if(i%2 ==0){
                  t= new Task(UUID.randomUUID(),taskGroup1,
@@ -28,7 +28,7 @@ public class Main {
         for (Future<String> ans: answers) {
             try {
                 String answer = ans.get(1000, TimeUnit.SECONDS);
-                System.out.println(answer);
+                //System.out.println(answer);
             }catch (InterruptedException | ExecutionException | TimeoutException e){
                 System.out.println(e);
                 taskExecutor.shutdown();
@@ -57,12 +57,12 @@ class CTask1 implements Callable<String>{
                 //Thread.sleep(2000);
             }else{
                 System.out.println(" Odd Thread="+Thread.currentThread().getName()+" currently Processing Task number= "+number + " in task group = "+taskGroup);
-                Thread.sleep(10);
+                Thread.sleep(1000);
             }
             taskNumber = String.format("Task Number = %s completed",number);
             return taskNumber;
         }catch (InterruptedException e){
-
+            System.out.println(e);
         }
         return taskNumber;
     }
